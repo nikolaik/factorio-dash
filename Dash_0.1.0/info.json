@@ -1,0 +1,11 @@
+{
+  "name": "Dash",
+  "version": "0.1.0",
+  "title": "Dashboard",
+  "author": "Nikolai Kristiansen",
+  "contact": "nikolaik@gmail.com",
+  "homepage": "https://nkweb.no",
+  "factorio_version": "0.17",
+  "dependencies": ["base >= 0.17"],
+  "description": "Missed the attack alert? This mods exports game events and displays them on a dashboard."
+}
