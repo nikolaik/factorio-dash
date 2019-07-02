@@ -18,7 +18,7 @@ end)
 
 function log_event(event_name, value)
     -- Show this on the big screen
-    events_file = 'dashboard_events.json'
+    events_file = 'Dash-events.csv'
     game.print('YOLO! Logging event: ' .. event_name)
     -- Append the event to a CSV file.
     game.write_file(events_file, event_name .. ',' .. value, true, 0) -- written to $GAME_DIR/script-output

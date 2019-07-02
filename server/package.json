@@ -1,0 +1,17 @@
+{
+  "name": "dash-server",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "chokidar": "^3.0.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "nodemon": "^1.19.1"
+  }
+}
