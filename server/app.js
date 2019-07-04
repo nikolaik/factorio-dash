@@ -22,8 +22,7 @@ server.listen(process.env.PORT || 8000);
 //     res.sendFile(__dirname + '/index.html');
 // });
 
-const watcher = chokidar.watch(`${FACTORIO_DATA_PATH}/*.json`, {
-    ignored: /(^|[\/\\])\../,
+const watcher = chokidar.watch(`${FACTORIO_DATA_PATH}/*.csv`, {
     persistent: true
 });
 

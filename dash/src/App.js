@@ -1,7 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import io from 'socket.io-client';
 
+import soundfile from './airbus_seatbelt_sign.mp3';
 import './App.css';
+
+const Alert = () => {
+    const myRef = React.createRef();
+    return (
+        <audio ref={myRef} src={soundfile} autoPlay />
+    )
+};
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -24,7 +32,11 @@ function App() {
       <header className="App-header">
           <h1>Dashboard</h1>
           {events.map(([eventName, value]) => (
-              <div>{`${eventName}: ${value}`}</div>
+              <div>
+                  {`${eventName}: ${value}`}
+                  {eventName === 'entity_damaged' && <Alert />}
+              </div>
+
             )
           )}
       </header>

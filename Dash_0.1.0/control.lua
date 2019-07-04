@@ -21,30 +21,30 @@ function log_event(event_name, value)
     events_file = 'Dash-events.csv'
     game.print('YOLO! Logging event: ' .. event_name)
     -- Append the event to a CSV file.
-    game.write_file(events_file, event_name .. ',' .. value, true, 0) -- written to $GAME_DIR/script-output
+    game.write_file(events_file, event_name .. ',' .. value .. '\n', true, 0) -- written to $GAME_DIR/script-output
 end
 
 script.on_event(defines.events.on_player_joined_game,
-    function(player_index)
+    function(event)
         --print(serpent.dump(player_index))
-        player_joined = game.players[player_index.player_index]
-        log_event('player_joined_game,', player_joined.name)
+        player_joined = game.players[event.player_index]
+        log_event('player_joined_game', player_joined.name)
     end
+)
+
+script.on_event(defines.events.on_entity_damaged,
+        function(event)
+            log_event('entity_damaged')
+        end
 )
 -- Unused example code:
 --script.on_event(defines.events.on_tick,
---    function (event)
---        tps = 60 -- ticks per second
---        if event.tick % tps*3 == 0 then --common trick to reduce how often this runs, we don't want it running every tick, just every 30 ticks, so twice per second
+    --function (event)
+    --    tps = 60 -- ticks per second
+    --    if event.tick % tps*3 == 0 then --common trick to reduce how often this runs, we don't want it running every tick, just every 30 ticks, so twice per second
+            --log_event('tick', event.tick / tps)
 --            game.print('yolo '..event.tick / tps)
 --            --for index,player in pairs(game.connected_players) do  --loop through all online players on the server
---            --
---            --    --if they're wearing our armor
---            --    if player.character and player.get_inventory(defines.inventory.character_armor).get_item_count("fire-armor") >= 1 then
---            --        --create the fire where they're standing
---            --        player.surface.create_entity{name="fire-flame", position=player.position, force="neutral"}
---            --    end
---            --end
 --        end
 --    end
 --)
