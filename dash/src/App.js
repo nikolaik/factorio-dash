@@ -30,14 +30,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <h1>Dashboard</h1>
-          {events.map(([eventName, value]) => (
-              <div>
-                  {`${eventName}: ${value}`}
-                  {eventName === 'entity_damaged' && <Alert />}
-              </div>
-
-            )
+          {Boolean(events.length) && <Alert/>}
+          {Array.from(events.entries()).map(([key, [eventName, ...values]]) => {
+               return (
+                   <div key={key}>
+                      {`${eventName}: ${values.join(' ')}`}
+                  </div>
+               )
+              }
           )}
       </header>
     </div>
